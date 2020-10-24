@@ -1,12 +1,12 @@
 /*
 	Author: Merson Alexandr
 
-	Group: СМБ-001-O-01
+	Group: Г‘ГЊГЃ-001-O-01
 
 	Task#: 3.19
 
-	Description: нахождение пар последовательных элементов,
-				 отношение которых меньше числа пи.
+	Description: Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЇГ Г° ГЇГ®Г±Г«ГҐГ¤Г®ГўГ ГІГҐГ«ГјГ­Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў,
+				 Г®ГІГ­Г®ГёГҐГ­ГЁГҐ ГЄГ®ГІГ®Г°Г»Гµ Г¬ГҐГ­ГјГёГҐ Г·ГЁГ±Г«Г  ГЇГЁ.
 */
 
 #include <stdio.h>
@@ -27,7 +27,7 @@ int input_border();
 
 int main()
 {
-    #define SIZE 21
+    	#define SIZE 21
 	double numbers[SIZE];
 	int pairs_numbers[SIZE];
 
@@ -90,27 +90,26 @@ void scan_array(double numbers[], const int S, const char choice)
 	}
 	else if (choice == 'a') {
 		srand(time(NULL));
-        int borders_input_correct;
-        int interval_left_border;
-        int interval_right_border;
+		int borders_input_correct;
+		int interval_left_border;
+		int interval_right_border;
 
-        do {
-            borders_input_correct = 1;
-            printf("\n Enter the left border of values range: ");
-            interval_left_border = input_border();
-            printf("\n Enter the left border of values range: ");
-            interval_right_border = input_border();
+		do {
+		    	borders_input_correct = 1;
+		    	printf("\n Enter the left border of values range: ");
+		    	interval_left_border = input_border();
+		    	printf("\n Enter the left border of values range: ");
+		    	interval_right_border = input_border();
 
-            if (interval_right_border < interval_left_border) {
-                printf ("\n Error!: left border of values range"
-                        "\n must be lesser then right border");
-                borders_input_correct = 0;
-            }
-        } while(!borders_input_correct);
+		    	if (interval_right_border < interval_left_border) {
+				printf ("\n Error!: left border of values range"
+					"\n must be lesser then right border");
+				borders_input_correct = 0;
+		    	}
+		} while (!borders_input_correct);
 
 		for (int i = 0; i < S; i++) {
-			numbers[i] = (rand() / (RAND_MAX + 1.0)) *
-                (interval_right_border - interval_left_border) + interval_left_border;
+			numbers[i] = (rand() / (RAND_MAX + 1.0)) * (interval_right_border - interval_left_border) + interval_left_border;
 		}
 	}
 }
@@ -131,10 +130,10 @@ void find_pairs(double numbers[], int pairs_numbers[], const int S)
 void print_pairs(double numbers[], int pairs_numbers[], const int S)
 {
 	printf("\n\n This program has find next pairs: ");
-    int pair_number = 0;
+	int pair_number = 0;
 	for (int i = 0; i < S + 1; i++) {
 		if (pairs_numbers[i] != 0) {
-            pair_number++;
+			pair_number++;
 			printf("\n %d: (%8.5lf, %8.5lf)", pair_number, numbers[i], numbers[i + 1]);
 		}
 	}
@@ -143,6 +142,6 @@ void print_pairs(double numbers[], int pairs_numbers[], const int S)
 void show_array (double numbers[], const int S) {
     printf("\n Array: ");
     for (int i = 0; i < S; i++) {
-        printf("\n a[%d] = %8.5lf", i, numbers[i]);
+    	printf("\n a[%d] = %8.5lf", i, numbers[i]);
     }
 }
