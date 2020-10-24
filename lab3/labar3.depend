@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1603462460 source:d:\programs\labar3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
