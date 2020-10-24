@@ -1,24 +1,21 @@
 /*
     Author: Merson Alexandr
 
-    Group: СМБ-001-O-01
+    Group: Г‘ГЊГЃ-001-O-01
 
     Task#: 1.9
 
-    Description: Перевод длинны, введённой в см, в метры и километры.
+    Description: ГЏГҐГ°ГҐГўГ®Г¤ Г¤Г«ГЁГ­Г­Г», ГўГўГҐГ¤ВёГ­Г­Г®Г© Гў Г±Г¬, Гў Г¬ГҐГІГ°Г» ГЁ ГЄГЁГ«Г®Г¬ГҐГІГ°Г».
 */
 
 #include <stdio.h>
 
 int main()
 {
-    //переменные, хранящие длину в см, м, км соответственно
     double lengthCm, lengthM, lengthKm;
-
     printf("\n This program converts the length entered in cm to m and km");
-
-    //проверка корректности введённого пользователем значения
-     // алтернатива логическому типу
+    //РїСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґС‘РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј Р·РЅР°С‡РµРЅРёСЏ
+    // Р°Р»С‚РµСЂРЅР°С‚РёРІР° Р»РѕРіРёС‡РµСЃРєРѕРјСѓ С‚РёРїСѓ
     int input_var_amont = 0;
     int input_value_is_integer = 0;
     do {
@@ -27,14 +24,12 @@ int main()
         input_value_is_integer = input_var_amont == 1;
         if(!input_value_is_integer) {
             printf("\n Input error: input value must be integer!");
-            fflush(stdin); //сброс буффера ввода
+            fflush(stdin); //Г±ГЎГ°Г®Г± ГЎГіГґГґГҐГ°Г  ГўГўГ®Г¤Г 
         }
     } while(!input_value_is_integer);
-    //конвертация
     lengthM = lengthCm / 100;
     lengthKm = lengthM / 1000;
-    //вывод рузельтата на экран
     printf("\n Length in meters: %f \n Length in kilometers: %f \n", lengthM, lengthKm);
-
+    
     return 0;
 }
