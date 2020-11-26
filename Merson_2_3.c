@@ -23,8 +23,8 @@ int main()
 	while (element != 0) {
 		printf(" Enter the element of sequence: ");
 		do {
-		    input_var_amount = scanf("%lf", &element);
-		    input_value_is_number = input_var_amount == 1;
+			input_var_amount = scanf("%lf", &element);
+			input_value_is_number = input_var_amount == 1;
 
 		    if (!input_value_is_number) {
 			printf("\n Input error: input value must be number!");
