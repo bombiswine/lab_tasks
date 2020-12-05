@@ -106,7 +106,6 @@ void del_cur_char_copies(char current_char, char* str, const int str_size)
 			}
 		}
 	}
-	puts(str);
 }
 
 int get_allocatable_str(char** str_ptr, int* const len_ptr)
