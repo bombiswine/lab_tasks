@@ -4,8 +4,6 @@
 #include <string.h>
 #include <ctype.h>
 
-#define OUTPUT_DEBUG_INFO 1
-
 void make_new_str(char**, char*, char*, const int, const int, int*);
 
 int def_new_str_size(char*, char*, const int, const int);
@@ -78,12 +76,6 @@ int def_new_str_size(char* first_str, char* second_str, const int first_str_size
 			for (int j = 0; j < second_str_size - size_ends; j++) {
 				if (current_char == second_str[j]) {
 					common_chars_amount += 1;
-
-                    #if OUTPUT_DEBUG_INFO
-					printf("\ncom ch am = %d\n", common_chars_amount);
-					printf("\ncom chr is: %c\n", current_char);
-					#endif // OUTPUT_DEBUG_INFO
-
 					del_cur_char_copies(current_char, first_str, first_str_size);
 					del_cur_char_copies(current_char, second_str, second_str_size);
 				}
