@@ -183,10 +183,10 @@ int choose_option(void)
 			return chosen_option;
 		} else {
 			printf(
-                "\nThere's no operation with number you have input"
+				"\nThere's no operation with number you have input"
 				"\nPlease enter the correct meaning: "
-            );
-
+			);
+			
 			fflush(stdin);
 		}
 	}
