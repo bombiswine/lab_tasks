@@ -298,6 +298,7 @@ void print_most_populated_cities_top_list(city* const cities_list, const int cit
             first_city_of_top_number = city_number;
         }
     }
+	
     /**find 2-d city of population rate**/
 
     int second_high_population = 0;
