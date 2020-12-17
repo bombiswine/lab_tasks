@@ -228,9 +228,9 @@ int choose_option(void)
 			return chosen_option;
 		} else {
 			printf(
-                "\nThere's no operation with number you have input"
+                		"\nThere's no operation with number you have input"
 				"\nPlease enter the correct meaning: "
-            ); Sleep(SHOW_MESSAGE_TIME);
+            		); Sleep(SHOW_MESSAGE_TIME);
 
 			fflush(stdin);
 		}
@@ -299,7 +299,7 @@ void add_many_cities(city** cities_list_ptr, int* cities_amount_ptr)
     if (upd_cities_list != NULL) {
         for (int added_city_num = 0; added_city_num < adding_cities_amount; added_city_num++) {
             city *added_city_ptr = &upd_cities_list[added_city_num];
-
+		
             add_information(added_city_ptr);
         }
 
