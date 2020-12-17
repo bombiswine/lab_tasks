@@ -4,10 +4,7 @@
 *                                          *
 *******************************************/
 
-enum show_time {
-    SHOWING_INF_TIME = 800,
-    SHOW_MESSAGE_TIME = 500
-};
+enum show_time { SHOW_MESSAGE_TIME = 1000 };
 
 enum size_of_top { TOP_LIST_POSITIONS = 3 };
 
@@ -89,59 +86,49 @@ int main()
         switch (chosen_option) {
 
             case EXIT_FROM_PROGRAM:
-                printf("<Exit> is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
-
+                printf("\n<Exit> is chosen\n");
                 free(cities_list);
                 stop_work = TRUE;
                 break;
 
             case ADD_ONE_CITY:
-                printf("<Add information about one city> is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
+                printf("\n<Add information about one city> is chosen\n");
                 add_one_city(&cities_list, &cities_amount);
                 break;
 
             case ADD_MANY_CITIES:
-                printf("<Add information about many city> is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
+                printf("\n<Add information about many city> is chosen\n");
                 add_many_cities(&cities_list, &cities_amount);
                 break;
 
             case PRINT_ALL_INFORMATION:
-                printf("<Print detailed cities list> is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
+                printf("\n<Print detailed cities list> is chosen\n");
 
                 if (cities_list != NULL) {
                     print_detailed_cities_list(cities_list, cities_amount);
                 } else {
                     printf("\nCities list is empty\n");
-                    Sleep(SHOW_MESSAGE_TIME);
                 }
                 break;
 
-
             case DELETE_ALL_INFORMATION:
-                printf("<Delete all information > is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
+                printf("\n<Delete all information > is chosen\n");
 
                 if (cities_amount > 0) {
                     clean_cities_list(&cities_list, &cities_amount);
                 } else {
                     printf("\nCities list is already empty\n");
-                    Sleep(SHOW_MESSAGE_TIME);
                 }
                 break;
 
             case PRINT_MOST_POPULATED_CITIES:
-                printf("<Print 3 mostly populated cities> is chosen\n");
-                Sleep(SHOW_MESSAGE_TIME);
+                printf("\n<Print 3 mostly populated cities> is chosen\n");
 
                 if (cities_amount < TOP_LIST_POSITIONS) {
                     printf(
                         "\nThere's too few information in the cities list"
                         "\nAdd some cities and information about ones to use this option\n"
-                    ); Sleep(SHOW_MESSAGE_TIME);
+                    );
                 } else {
                     print_top_most_populated_cities(cities_list, cities_amount);
                 }
@@ -149,7 +136,6 @@ int main()
 
             default:
                 printf("\nNo such option");
-                Sleep(SHOW_MESSAGE_TIME);
                 break;
         }
 
@@ -174,44 +160,38 @@ void scan_natural_value(int* var_ptr)
 		input_var_amount = scanf("%d", &var);
 		input_correct = input_var_amount == 1;
 
-		if (!input_correct) {
+		if (!input_correct || var <= 0) {
 			printf(
 				"\nError: input value must be positive number!"
 				"\nPlease enter the correct meaning: "
-			); Sleep(SHOW_MESSAGE_TIME);
+			);
 
 			fflush(stdin);
 		}
-		else if (var <= 0) {
-			printf("\nError: input value must be positive number!");
-			Sleep(SHOW_MESSAGE_TIME);
-		}
 
-	} while (!input_correct);
+	} while (!input_correct || var <= 0);
 
 	*var_ptr = var;
 }
 
 void show_menu(void)
 {
-    printf("\nChoose the option from this list\n");
-    Sleep(SHOW_MESSAGE_TIME);
-
-	printf(
-		"====================================================\n"
-		"| Add information about one city         (enter 1) |\n"
-		"|--------------------------------------------------|\n"
-		"| Add information about many cities      (enter 2) |\n"
-		"|--------------------------------------------------|\n"
-		"| Print detailed cities list             (enter 3) |\n"
-		"|--------------------------------------------------|\n"
-		"| Delete all information                 (enter 4) |\n"
-		"|--------------------------------------------------|\n"
-		"| Print 3 mostly populated cities        (enter 5) |\n"
-		"|--------------------------------------------------|\n"
-		"| Exit                                   (enter 6) |\n"
-		"====================================================\n"
-	);
+    printf(
+	    "\nChoose the option from the options list\n"
+	    "====================================================\n"
+	    "| Add information about one city         (enter 1) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Add information about many cities      (enter 2) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Print detailed cities list             (enter 3) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Delete all information                 (enter 4) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Print 3 mostly populated cities        (enter 5) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Exit                                   (enter 6) |\n"
+	    "====================================================\n"
+    );
 }
 
 int choose_option(void)
@@ -230,7 +210,7 @@ int choose_option(void)
 			printf(
                 		"\nThere's no operation with number you have input"
 				"\nPlease enter the correct meaning: "
-            		); Sleep(SHOW_MESSAGE_TIME);
+            		);
 
 			fflush(stdin);
 		}
@@ -258,7 +238,6 @@ void add_information(city* city_ptr)
     city_ptr -> population = city_population;
 
     printf("\n<Entry succesful>\n");
-    Sleep(SHOW_MESSAGE_TIME);
 }
 
 void add_one_city(city** cities_list_ptr, int* cities_amount_ptr)
@@ -299,7 +278,7 @@ void add_many_cities(city** cities_list_ptr, int* cities_amount_ptr)
     if (upd_cities_list != NULL) {
         for (int added_city_num = 0; added_city_num < adding_cities_amount; added_city_num++) {
             city *added_city_ptr = &upd_cities_list[added_city_num];
-		
+
             add_information(added_city_ptr);
         }
 
@@ -318,7 +297,6 @@ void print_detailed_cities_list(city* const cities_list, const int cities_amount
 
         int number_of_position_in_list = city_number + 1;
 
-        Sleep(SHOW_MESSAGE_TIME);
         printf(
             "\nInformation about %d city"
             "\n\tCountry: %s\n\tName: %s\n\tPopulation: %d people",
@@ -330,8 +308,6 @@ void print_detailed_cities_list(city* const cities_list, const int cities_amount
 
         putchar('\n');
     }
-
-    Sleep(SHOW_MESSAGE_TIME);
 }
 
 void print_top_most_populated_cities(city* const cities_list, const int cities_amount)
@@ -349,6 +325,7 @@ void print_top_most_populated_cities(city* const cities_list, const int cities_a
             first_city_of_top_number = city_number;
         }
     }
+	
     /**find 2-d city of population rate**/
 
     int second_high_population = 0;
@@ -390,7 +367,7 @@ void print_top_most_populated_cities(city* const cities_list, const int cities_a
         cities_list[second_city_of_top_number].name, second_high_population,
         cities_list[third_city_of_top_number].name, third_high_population
 
-    ); Sleep(SHOW_MESSAGE_TIME);
+    );
 
     putchar('\n');
 }
@@ -423,8 +400,10 @@ void demo_mode(void)
 
     printf("\nDemo cities list:");
     print_detailed_cities_list(demo_cities_list, demo_cities_amount);
+    Sleep(SHOW_MESSAGE_TIME);
 
     print_top_most_populated_cities(demo_cities_list, demo_cities_amount);
+    Sleep(SHOW_MESSAGE_TIME);
 
     printf("\nDemonstration completed\n");
     Sleep(SHOW_MESSAGE_TIME);
