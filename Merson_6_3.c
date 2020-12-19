@@ -8,8 +8,6 @@
 *                                          *
 *******************************************/
 
-enum size_of_top { TOP_LIST_POSITIONS = 3 };
-
 typedef enum Bool { FALSE, TRUE } Bool;
 
 typedef enum option {
@@ -20,6 +18,8 @@ typedef enum option {
     PRINT_MOST_POPULATED_CITIES,
     EXIT_FROM_PROGRAM
 } option;
+
+enum { TOP_LIST_POSITIONS = 3 };
 
 enum { MEMORY_ALLOCATION_ERROR = -31 };
 
