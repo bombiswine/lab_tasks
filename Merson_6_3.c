@@ -1,10 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /*******************************************
 *                                          *
-*               user's types              *
+*                user's types              *
 *                                          *
 *******************************************/
-
-enum show_time { SHOW_MESSAGE_TIME = 1000 };
 
 enum size_of_top { TOP_LIST_POSITIONS = 3 };
 
@@ -19,7 +21,7 @@ typedef enum option {
     EXIT_FROM_PROGRAM
 } option;
 
-enum ERROR { MEMORY_ALLOCATION_ERROR = -31 };
+enum { MEMORY_ALLOCATION_ERROR = -31 };
 
 #define MAX_SIZE 64
 
@@ -28,17 +30,6 @@ typedef struct city {
     char name[MAX_SIZE];
     int population;
 } city;
-
-/*******************************************
-*                                          *
-*             included headers             *
-*                                          *
-*******************************************/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <windows.h>            //for Sleep()
 
 /*******************************************
 *                                          *
@@ -69,11 +60,10 @@ void demo_mode(void);
 int main()
 {
     printf("\nDemonstration mode is launched\n");
-    Sleep(SHOW_MESSAGE_TIME);
     demo_mode();
+    system("pause");
 
     printf("\nNow you are in the work modul\n");
-    Sleep(SHOW_MESSAGE_TIME);
 
     city *cities_list = NULL;
     int cities_amount = 0;
@@ -150,17 +140,17 @@ int main()
 *                                          *
 *******************************************/
 
-void scan_natural_value(int* var_ptr)
+void scan_natural_value(int* natural_number_ptr)
 {
-	int var = 0;
+	int natural_number = 0;
 	int input_var_amount = 0;
 	int input_correct = 0;
 
 	do {
-		input_var_amount = scanf("%d", &var);
+		input_var_amount = scanf("%d", &natural_number);
 		input_correct = input_var_amount == 1;
 
-		if (!input_correct || var <= 0) {
+		if (!input_correct || natural_number <= 0) {
 			printf(
 				"\nError: input value must be positive number!"
 				"\nPlease enter the correct meaning: "
@@ -169,9 +159,9 @@ void scan_natural_value(int* var_ptr)
 			fflush(stdin);
 		}
 
-	} while (!input_correct || var <= 0);
+	} while (!input_correct || natural_number <= 0);
 
-	*var_ptr = var;
+	*natural_number_ptr = natural_number;
 }
 
 void show_menu(void)
@@ -191,7 +181,7 @@ void show_menu(void)
 	    "|--------------------------------------------------|\n"
 	    "| Exit                                   (enter 6) |\n"
 	    "====================================================\n"
-    );
+	);
 }
 
 int choose_option(void)
@@ -208,9 +198,9 @@ int choose_option(void)
 			return chosen_option;
 		} else {
 			printf(
-                		"\nThere's no operation with number you have input"
+                "\nThere's no operation with number you have input"
 				"\nPlease enter the correct meaning: "
-            		);
+            );
 
 			fflush(stdin);
 		}
@@ -325,7 +315,6 @@ void print_top_most_populated_cities(city* const cities_list, const int cities_a
             first_city_of_top_number = city_number;
         }
     }
-	
     /**find 2-d city of population rate**/
 
     int second_high_population = 0;
@@ -400,11 +389,8 @@ void demo_mode(void)
 
     printf("\nDemo cities list:");
     print_detailed_cities_list(demo_cities_list, demo_cities_amount);
-    Sleep(SHOW_MESSAGE_TIME);
 
     print_top_most_populated_cities(demo_cities_list, demo_cities_amount);
-    Sleep(SHOW_MESSAGE_TIME);
 
     printf("\nDemonstration completed\n");
-    Sleep(SHOW_MESSAGE_TIME);
 }
