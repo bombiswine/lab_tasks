@@ -111,21 +111,21 @@ int main()
 void show_menu(void)
 {
     printf(
-        "\nChoose the option from the options list\n"
-		"====================================================\n"
-		"| Add information about one city         (enter 1) |\n"
-		"|--------------------------------------------------|\n"
-		"| Add information about many cities      (enter 2) |\n"
-		"|--------------------------------------------------|\n"
-		"| Print detailed cities list             (enter 3) |\n"
-		"|--------------------------------------------------|\n"
-		"| Delete all information                 (enter 4) |\n"
-		"|--------------------------------------------------|\n"
-		"| Print 3 mostly populated cities        (enter 5) |\n"
-		"|--------------------------------------------------|\n"
-		"| Exit                                   (enter 0) |\n"
-		"====================================================\n"
-	);
+	    "\nChoose the option from the options list\n"
+	    "====================================================\n"
+	    "| Add information about one city         (enter 1) |\n"
+	    "|--------------------------------------------------|\n"
+ 	    "| Add information about many cities      (enter 2) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Print detailed cities list             (enter 3) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Delete all information                 (enter 4) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Print 3 mostly populated cities        (enter 5) |\n"
+	    "|--------------------------------------------------|\n"
+	    "| Exit                                   (enter 0) |\n"
+	    "====================================================\n"
+    );
 }
 
 int choose_option(void)
