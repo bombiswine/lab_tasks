@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "D:\programs_c\safe_inputs.h"
+#include "safe_inputs.h"
 
 /*******************************************
 *               user's types               *
 *******************************************/
-enum { TOP_LIST_POSITIONS = 3 };
-
 typedef enum Bool { FALSE, TRUE } Bool;
 
 typedef enum option {
@@ -55,6 +53,7 @@ void exit_from_program(city* cities_list);
 
 void demo_mode(void);
 
+/***************************************/
 
 int main()
 {
@@ -115,7 +114,7 @@ void show_menu(void)
 	    "====================================================\n"
 	    "| Add information about one city         (enter 1) |\n"
 	    "|--------------------------------------------------|\n"
- 	    "| Add information about many cities      (enter 2) |\n"
+	    "| Add information about many cities      (enter 2) |\n"
 	    "|--------------------------------------------------|\n"
 	    "| Print detailed cities list             (enter 3) |\n"
 	    "|--------------------------------------------------|\n"
@@ -135,16 +134,16 @@ int choose_option(void)
 
 	printf("Your choice is: ");
 
-    	do {
-            chosen_option = scan_whole_number();
+    do {
+		chosen_option = scan_whole_number();
 
-            if (chosen_option < EXIT_FROM_PROGRAM || chosen_option > PRINT_CITIES_TOP) {
-	    	printf("\nNo such operation\nMake enter correct meaning: ");
-	    	fflush(stdin);
-            } else {
-	    	option_input_correct = TRUE;
-	    }
-		
+		if (chosen_option < EXIT_FROM_PROGRAM || chosen_option > PRINT_CITIES_TOP) {
+			printf("\nNo such operation\nMake enter correct meaning: ");
+			fflush(stdin);
+		} else {
+            option_input_correct = TRUE;
+		}
+
 	} while (!option_input_correct);
 
 	return chosen_option;
@@ -168,7 +167,7 @@ void add_information(city* city_ptr, city* const cities_list, const int cities_a
     const int city_population = scan_natural_value();
     city_ptr -> population = city_population;
 
-    printf("\n<Entry succesful>\n");
+    printf("\n<Entry succes>\n");
 }
 
 void get_city_name(city* const city_ptr, city* const cities_list, const int cities_amount)
@@ -286,8 +285,9 @@ void print_detailed_cities_list(city* const cities_list, const int cities_amount
 void print_top_most_populated_cities(city* const cities_list, const int cities_amount)
 {
     printf("\n<Print 3 mostly populated cities> is chosen\n");
-
-    enum position_in_top {FIRST, SECOND, THIRD};
+	
+    enum { TOP_LIST_POSITIONS = 3 };
+    enum { FIRST, SECOND, THIRD };
 
     if (cities_amount >= TOP_LIST_POSITIONS) {
         int highest_population = 0;
@@ -347,7 +347,6 @@ void clean_cities_list(city** cities_list_ptr, int* cities_amount_ptr)
     }
 
     printf("\nCities list is empty\n");
-
 }
 
 void exit_from_program(city* cities_list)
