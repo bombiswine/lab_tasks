@@ -238,7 +238,6 @@ void add_many_cities(city** cities_list_ptr, int* cities_amount_ptr)
     upd_cities_list = (city*)realloc(upd_cities_list, upd_cities_amount * sizeof(city));
 
     if (upd_cities_list != NULL) {
-
         for (int city_num = start_cities_amount; city_num < upd_cities_amount; city_num++) {
             city* added_city_ptr = &upd_cities_list[city_num];
             add_information(added_city_ptr, upd_cities_list, upd_cities_amount);
@@ -246,7 +245,6 @@ void add_many_cities(city** cities_list_ptr, int* cities_amount_ptr)
 
         *cities_list_ptr = upd_cities_list;
         *cities_amount_ptr = upd_cities_amount;
-
     } else {
         printf("\nMemory allocation error");
         exit(MEMORY_ALLOCATION_ERROR);
@@ -259,10 +257,8 @@ void print_detailed_cities_list(city* const cities_list, const int cities_amount
     printf("\n<Print detailed cities list> is chosen\n");
 
     if (cities_amount > 0) {
-
         for (int city_number = 0; city_number < cities_amount; city_number++) {
             int number_of_position_in_list = city_number + 1;
-
             printf(
                 "\nInformation about %d city"
                 "\n\tCountry: %s\n\tName: %s\n\tPopulation: %d people\n",
@@ -272,7 +268,7 @@ void print_detailed_cities_list(city* const cities_list, const int cities_amount
                 cities_list[city_number].population
             );
         }
-
+	    
     } else {
         printf(
             "\nThere's too few information in the cities list"
