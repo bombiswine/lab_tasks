@@ -129,24 +129,23 @@ void show_menu(void)
 
 int choose_option(void)
 {
-	int chosen_option = 0;
-	int option_input_correct = FALSE;
+    int chosen_option = 0;
+    int option_input_correct = FALSE;
 
-	printf("Your choice is: ");
+    printf("Your choice is: ");
 
     do {
-		chosen_option = scan_whole_number();
+	chosen_option = scan_whole_number();
 
-		if (chosen_option < EXIT_FROM_PROGRAM || chosen_option > PRINT_CITIES_TOP) {
-			printf("\nNo such operation\nMake enter correct meaning: ");
-			fflush(stdin);
-		} else {
-            option_input_correct = TRUE;
-		}
-
-	} while (!option_input_correct);
-
-	return chosen_option;
+	if (chosen_option < EXIT_FROM_PROGRAM || chosen_option > PRINT_CITIES_TOP) {
+		printf("\nNo such operation\nMake enter correct meaning: ");
+		fflush(stdin);
+	} else {
+            	option_input_correct = TRUE;
+	} 
+    } while (!option_input_correct);
+    
+    return chosen_option;
 }
 
 void add_information(city* city_ptr, city* const cities_list, const int cities_amount)
